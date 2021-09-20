@@ -10,7 +10,7 @@
         <th class="text-center">予約状況</th>
         <th class="text-center">変更</th>
       </tr>
-    <% @ticket_all.each do |ticket| %>
+    <% @tickets.each do |ticket| %>
       <tr>
         <th class="text-center"><%= ticket.id %></th>
         <td class="text-center">
@@ -39,6 +39,7 @@
       </tr>
     <% end %>
     </table>
+    <%== pagy_nav(@pagy) %>
     <div>
       <%= link_to '管理-チケット登録', tickets_new_path %>
     </div>
@@ -51,7 +52,7 @@
         <th class="text-center">予約状況</th>
         <th class="text-center">予約</th>
       </tr>
-      <% @ticket.each do |ticket| %>
+      <% @tickets.each do |ticket| %>
       <tr>
         <th class="text-center"><%= ticket.id %></th>
         <td class="text-center">
@@ -86,6 +87,7 @@
       </tr>
     <% end %>
     </table>
+    <%== pagy_nav(@pagy) %>
   <% end %>    
 <% else %>
   <div class="bg-secondary p-3 p-sm-5 my-4 rounded">

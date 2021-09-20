@@ -4,23 +4,17 @@ class TicketsController < ApplicationController
     
   def new
     @form_ticket = Ticket.new
-    @ticket = Ticket.new(:user_id => 1, :status => 1, :course => 'コース')
+#0920    @ticket = Ticket.new(:user_id => 1, :status => 1, :course => 'コース')
   end
 
   def create
-
-#    @ticket.appt_datetime = params[:appt_datetime] 
-#    datetime_tmp = DateTime.new(params)
-#     datetime_tmp = DateTime.new(params[:appt_datetime])
-#    @ticket.appt_datetime = params[:created_at] 
-#    @ticket.appt_datetime = DateTime.new(params[:created_at]) 
 
     @ticket = Ticket.new
     @ticket.appt_datetime = params[:created_at]
     @ticket.course = params[:course] 
     @ticket.status =" 1".to_i  
     @ticket.user_id = current_user.id
-# binding.pry
+
     if @ticket.save
       flash[:success] = 'チケットが正常に登録されました'
       redirect_to root_path
@@ -59,7 +53,7 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-     params.require(:user_id).permit(:course) 
+     params.require(:ticket).permit(:course) 
   end
 
 end
