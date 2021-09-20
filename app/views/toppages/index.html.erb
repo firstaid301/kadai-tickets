@@ -1,5 +1,5 @@
 <% if logged_in? %>
-  <p><%= current_user.id %>ログインユーザ: <%= current_user.name %></p>
+  <p>ログインユーザ: <%= current_user.name %></p>
   <% if current_user.is_admin %>
     <table class="table">
       <tr>
@@ -61,7 +61,7 @@
           <% else %>
             <%= "　　" %>   
           <% end %>         
-        <td class="text-center"><%= ticket.course %><%= ticket.user_id %></td>
+        <td class="text-center"><%= ticket.course %></td>
         <td class="text-center">
           <% if ticket.status == 1  %>
             <%= "予約可" %>
