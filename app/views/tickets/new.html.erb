@@ -1,25 +1,37 @@
-<h1>チケット登録</h1>
-<p>ログインユーザ: <%= current_user.name %></p>
-
-<div class="row">
-  <div class="col-sm-6 offset-sm-3">
-    
+<% if logged_in? %>
+  <% if current_user.is_admin %>
+    <h1>チケット登録</h1>
+    <p>ログインユーザ: <%= current_user.name %></p>
+    <div class="row">
+    <div class="col-sm-6 offset-sm-3">
     <%= form_with(url: tickets_create_path) do |f| %>
-    
       <div class="mb-3">
         <%= f.label :日付　開始時間：, class: 'control-label' %>
         <%= f.datetime_field :created_at, class: 'form-control' %>
       </div>
-      
       <div class="mb-3">
         <%= f.label :コース：,  class: 'control-label'%>
         <%= f.text_field :course, class: 'form-control' %>
       </div>
-    
-      <%= f.submit '登録', class: 'btn btn-primary btn-sm' %>
+        <%= f.submit '登録', class: 'btn btn-primary btn-sm' %>
     <% end %>
-
+    </div>
+    </div>
+      <%= link_to '管理-チケット一覧', root_path %>
+  <% else %>
+    <div class="bg-secondary p-3 p-sm-5 my-4 rounded">
+      <div class="text-center text-white">
+        <h1>Welcome to the Tickets.index </h1>
+        <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+  <div class="bg-secondary p-3 p-sm-5 my-4 rounded">
+    <div class="text-center text-white">
+      <h1>Welcome to the Tickets.index </h1>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
   </div>
-</div>
+<% end %>
 
-<%= link_to '管理-チケット一覧', root_path %>

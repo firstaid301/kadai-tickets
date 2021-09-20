@@ -7,15 +7,9 @@
     <%= form_with(url: tickets_create_path) do |f| %>
     
       <div class="mb-3">
-
-        <%= f.label :日付：, class: 'control-label' %>
-        <%= f.date_select :appt_datetime, class: 'form-control' %>
+        <%= f.label :日付　開始時間：, class: 'control-label' %>
+        <%= f.datetime_field :created_at, class: 'form-control' %>
       </div>
-      
-      <div class="mb-3">  
-        <%= f.label :開始時間：, class: 'control-label' %>
-        <%= f.time_select :appt_datetime, class: 'form-control' %>
-      </div>   
       
       <div class="mb-3">
         <%= f.label :コース：,  class: 'control-label'%>
