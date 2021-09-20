@@ -1,0 +1,42 @@
+<% if logged_in? %>
+  <p>TOPpages#index ログイン完了ユーザ: <%= current_user.name %></p>
+  <table class="table">
+    <tr>
+      <th class="text-center">No.</th>
+      <th class="text-center">日付</th>  
+      <th class="text-center">時間</th>
+      <th class="text-center">コース内容</th>      
+      <th class="text-center">予約状況</th>
+      <th class="text-center">予約</th>
+    </tr>
+    <% @ticket.each do |ticket| %>
+      <tr>
+        <th class="text-center"><%= ticket.id %></th>
+        <td class="text-center"><%= ticket.appt_datetime %></td>
+        <td class="text-center"><%= ticket.appt_datetime %></td>
+        <td class="text-center"><%= ticket.course %></td>
+        <td class="text-center">
+          <% if ticket.status == 1  %>
+            <%= "予約可" %>
+          <% else %>
+            <%= "予約中" %>
+          <% end %>        
+        </td>
+        <td class="text-center">
+          <% if ticket.status == 1  %>
+            <%= link_to "予約", tickets_edit_path(ticket.id), method: :get, data: { confirm: "You sure?" }, class: 'btn btn-primary btn-sm' %>
+          <% else %>
+            <%= link_to "取消", tickets_edit_path(ticket.id), method: :get, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>       
+        </td>
+      </tr>
+    <% end %>
+  </table>  
+<% else %>
+  <div class="bg-secondary p-3 p-sm-5 my-4 rounded">
+    <div class="text-center text-white">
+      <h1>Welcome to the Tickets.index </h1>
+      <%= link_to 'Sign up now!', signup_path, class: 'btn btn-lg btn-primary' %>
+    </div>
+  </div>
+<% end %>

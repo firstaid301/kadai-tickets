@@ -34,5 +34,8 @@ module Tickets
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+    
+    #2021/09/20 追加
+    config.time_zone = 'Tokyo' 
   end
 end

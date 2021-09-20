@@ -1,0 +1,20 @@
+<h1>チケット登録</h1>
+<%= @ticket %>
+<%= form_with(model: @form_ticket ) do |f| %>
+  <%= f.label :appt_datetime, '日付、時間' %>
+  <%= f.text_field :appt_datetime %>
+
+  <%= f.label :course, 'コース' %>
+  <%= f.text_field :course %>
+
+  <%= f.label :status, 'ステータス' %>
+  <%= f.text_field :status %>
+
+  <%= f.label :user_id, 'user id' %>
+  <%= f.text_field :user_id %>
+
+  <%= f.submit '登録' %>
+<% end %>
+
+
+<%= link_to '一覧に戻る', root_path %>
